@@ -1,0 +1,273 @@
+
+import java.util.*;
+
+
+interface Features{
+
+	int mega_pixel = 64 ;
+	
+	int mega_pixel2 = 48 ;
+	
+	int resolution = 1080 ;
+	
+	String ram1 = "4GB";
+	String Rom1 = "64GB";
+	
+	String ram2 = "8GB";
+	String Rom2 = "128GB";
+	
+	
+	
+	
+	void addCamera64();
+	
+	void addCamera48();
+	
+	void addStorageType1();
+	
+	void addStorageType2();
+	
+	void addDisplay();
+
+
+}
+
+
+
+class Mobile implements Features{
+
+
+
+	public void addCamera64(){
+	
+	System.out.println(" Camera with : "+mega_pixel+"mp");
+	
+	}
+	
+	public void addCamera48(){
+	
+	System.out.println(" Camera with : "+mega_pixel2+"mp");
+	
+	}
+	
+	
+	
+	
+	public void addDisplay(){
+	
+	System.out.println(" Full HD : "+resolution+"p");
+	
+	
+	}
+	
+	
+	public void addStorageType1(){
+	
+	System.out.println(" Ram = 4GB : Rom = 64GB");
+	
+	
+	}
+	
+	public void addStorageType2(){
+	
+	System.out.println(" Ram = 8GB : Rom = 128GB");
+	
+	
+	}
+	
+	
+
+}
+
+
+
+
+class OperatingSystem{
+
+		
+		private String Brand_Name;
+	
+		private String model ;
+	
+		private final static String os_version = "Android 12";
+	
+		static int no_of_device = 0 ;
+	
+	
+	OperatingSystem(String Brand_Name, String model){
+	
+		this.Brand_Name = Brand_Name ;
+		
+		this.model = model ;
+		
+		
+		no_of_device++;
+	
+	}
+	
+	final void kernal(){
+	
+		/*
+		
+			Kernal code, no one has access to override this method
+			
+		*/
+	
+	
+	}
+	
+	void showDetails(){
+	
+		
+		System.out.println(" Brand Name : "+Brand_Name+"\n Model no : "+model+"\n Version : "+os_version);
+	
+	
+	
+	}
+
+
+
+}
+
+
+
+
+
+class SmartphoneBuilder{
+
+
+	public static void main(String args[]){
+	
+	
+	Scanner sc = new Scanner(System.in);
+
+	
+	int choice ;
+	
+	String mp;
+	
+	int type;
+	
+	char n  = 'a';
+	
+	do{
+	
+	System.out.println(" ---Welcome to Smartphone Buildder--- ");
+	
+	System.out.println("Enter your choice\n"+"1.Redmi\n"+"2.Samsung\n"+"3.Exit");
+	
+	choice = sc.nextInt();
+	
+	switch(choice){
+	
+	
+		case 1:
+		
+			System.out.println("Redmi");
+			
+			
+			OperatingSystem mi = new OperatingSystem("Red MI","Note 7s");
+			
+			Features redmi = new Mobile();
+	
+			mi.showDetails();
+			
+			System.out.println(" Enter Camera : 48mp or 64mp");
+			
+			 mp = sc.next();
+			
+			System.out.println(" Enter 1 for Type 1 Storage Ram = 4GB and Rom = 64GB");
+			System.out.println(" Enter 2 for Type 2 Storage Ram = 64GB and Rom = 128GB");
+			
+			 type = sc.nextInt();
+			
+			
+			if(mp.equals("48mp"))
+			redmi.addCamera48();
+			else
+			redmi.addCamera64();
+			
+			if(type ==1)
+			redmi.addStorageType1();
+			else
+			redmi.addStorageType2();
+			
+			
+			System.out.println(" Display by Default ");
+			
+			redmi.addDisplay();
+			
+			
+			break;
+			
+			
+			case 2:
+		
+			System.out.println("Samsung");
+			
+			
+			OperatingSystem sam = new OperatingSystem("Samsung","Galaxy Note 20");
+			
+			Features samsung = new Mobile();
+	
+			sam.showDetails();
+			
+			System.out.println(" Enter Camera : 48mp or 64mp");
+			
+			 mp = sc.next();
+			
+			System.out.println(" Enter 1 for Type 1 Storage Ram = 4GB and Rom = 64GB");
+			System.out.println(" Enter 2 for Type 2 Storage Ram = 64GB and Rom = 128GB");
+			
+			 type = sc.nextInt();
+			
+			
+			if(mp.equals("48mp"))
+			samsung.addCamera48();
+			else
+			samsung.addCamera64();
+			
+			if(type ==1)
+			samsung.addStorageType1();
+			else
+			samsung.addStorageType2();
+			
+			
+			System.out.println(" Display by Default ");
+			
+			samsung.addDisplay();
+			
+			
+			break;
+			
+			case 3 : 
+			
+				n = 'e';
+				
+				System.out.println("😁️----Thank you For using our Services----😁️");
+				
+			break; 
+			
+			
+			default:
+				System.out.println(" Please Enter the valid  Choice ");
+	
+				
+	
+	} 
+	
+	
+	}while(n != 'e');
+	
+	System.out.println("\nTotal Number of Devices Builded\t"+OperatingSystem.no_of_device+"\n");
+	
+	
+	
+	
+	
+	}
+
+
+
+
+}
